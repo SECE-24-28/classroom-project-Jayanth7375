@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About – Jayanth</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+</head>
+
+<body class="bg-[#f7f1e5] text-[#3a2a1f]">
+
+<header class="bg-[#fffaf2] border-b-2 border-[#b68b63] px-8 py-4 shadow-lg">
+  <div class="flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-[#5a341a]">About Me</h1>
+    <nav class="space-x-6 text-lg font-semibold">
+      <a href="dashboard-C.html">Dashboard</a>
+      <a href="projects.html">Projects</a>
+      <a href="skills.html">Skills</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="container mx-auto px-6 py-10">
+
+  <h2 class="text-3xl font-bold text-[#5a341a] mb-6" data-aos="fade-up">Who Am I?</h2>
+  <p class="text-lg leading-relaxed max-w-3xl mb-8" data-aos="fade-up" data-aos-delay="150">
+    I'm <strong>Jayanth E</strong>, a passionate developer currently pursuing 
+    <strong>B.Tech AIDS at Sri Eshwar College of Engineering</strong> (CGPA 8.04)
+    I specialize in building intelligent systems using MERN Stack, Machine Learning, and Spring Boot.  
+    I’ve built impactful projects like a <strong>Hospital Management System</strong>, 
+    <strong>Smart File Organizer</strong>, and a <strong>Micro-Donation Platform</strong>
+
+  <div class="grid md:grid-cols-2 gap-10">
+
+    <div class="bg-[#fffaf2] p-6 rounded-xl shadow-lg" data-aos="zoom-in">
+      <h3 class="text-xl font-semibold mb-3 text-[#5a341a]">Education</h3>
+      <ul class="space-y-2">
+        <li><strong>Sri Eshwar College of Engineering</strong> – B.Tech AIDS (2024–2028)</li>
+        <li><strong>Vikas Vidyalaya Hr Sec School</strong> – HSC 90%</li>
+        <li><strong>St. Joseph Hr Sec School</strong> – SSLC 85%</li>
+      </ul>
+    </div>
+
+    <div class="bg-[#fffaf2] p-6 rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="150">
+      <h3 class="text-xl font-semibold mb-3 text-[#5a341a]">Achievements</h3>
+      <ul class="space-y-2">
+        <li>Winner – Celesta (2nd Runner-Up)</li>
+        <li>Participated – Creataton’24</li>
+        <li>Participated – Freshathon’25</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- Floating Chatbot Button -->
+<button class="fixed bottom-6 right-6 px-5 py-3 bg-[#7a4c29] text-white 
+        rounded-full shadow-xl hover:bg-[#5a341a] transition font-semibold"
+        onclick="chatbase('open')">
+  Chat with my AI
+</button>
+
+<!-- YOUR CHATBASE CHATBOT SCRIPT -->
+<script>
+(function(){
+  if(!window.chatbase || window.chatbase("getState")!=="initialized"){
+    window.chatbase=(...args)=>{(window.chatbase.q ??= []).push(args)};
+    window.chatbase=new Proxy(window.chatbase,{
+      get(target,prop){
+        if(prop==="q") return target.q;
+        return (...args)=>target(prop,...args);
+      }
+    });
+  }
+  const onLoad=function(){
+    const script=document.createElement("script");
+    script.src="https://www.chatbase.co/embed.min.js";
+    script.id="5ctcBwPFTgXxePSf-ac_z";
+    script.domain="www.chatbase.co";
+    document.body.appendChild(script);
+  };
+  if(document.readyState==="complete") onLoad();
+  else window.addEventListener("load",onLoad);
+})();
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+
+</body>
+</html>

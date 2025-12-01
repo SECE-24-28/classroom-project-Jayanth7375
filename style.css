@@ -1,0 +1,132 @@
+/* -------- ROOT THEME -------- */
+:root {
+  --bg: #f7f1e5;
+  --bg-light: #fffaf2;
+  --brown: #7a4c29;
+  --brown-dark: #5a341a;
+  --brown-light: #b68b63;
+  --text: #3a2a1f;
+  --white: #ffffff;
+
+  --radius: 14px;
+  --container: 1100px;
+
+  --shadow: 0 6px 18px rgba(0,0,0,0.12);
+
+  font-family: "Poppins", sans-serif;
+}
+
+/* -------- RESET -------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); }
+
+/* -------- CONTAINER -------- */
+.container {
+  max-width: var(--container);
+  margin: auto;
+  padding: 2rem;
+}
+
+/* -------- HEADER -------- */
+header {
+  background: var(--bg-light);
+  padding: 1.1rem 0;
+  border-bottom: 2px solid var(--brown-light);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: var(--shadow);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--brown-dark);
+  text-decoration: none;
+}
+
+.nav-links a {
+  margin-left: 1.2rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--brown);
+  transition: 0.25s;
+}
+
+.nav-links a:hover {
+  color: var(--brown-dark);
+  transform: translateY(-3px);
+}
+
+/* -------- SECTIONS -------- */
+.section {
+  padding: 3rem 0;
+}
+
+h1, h2 {
+  color: var(--brown-dark);
+  margin-bottom: 1rem;
+}
+
+/* -------- BUTTONS -------- */
+.btn {
+  background: var(--brown);
+  color: var(--white);
+  padding: 0.65rem 1.3rem;
+  display: inline-block;
+  border-radius: var(--radius);
+  font-weight: bold;
+  transition: 0.25s;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--brown-dark);
+  transform: translateY(-4px);
+}
+
+/* -------- FLOATING CHATBOT BUTTON -------- */
+.chatbot-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: var(--brown);
+  color: var(--white);
+  padding: 0.9rem 1.3rem;
+  border-radius: 50px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: 0.25s;
+}
+
+.chatbot-btn:hover {
+  background: var(--brown-dark);
+  transform: scale(1.05);
+}
+
+/* -------- ANIMATIONS -------- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+}

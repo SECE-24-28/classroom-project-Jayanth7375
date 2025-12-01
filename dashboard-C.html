@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+</head>
+<body class="bg-[#f7f1e5] text-[#3a2a1f]">
+
+<div class="min-h-screen flex">
+  <!-- sidebar -->
+  <aside class="w-64 bg-[#fffaf2] border-r border-[#b68b63] p-6">
+    <a href="index.html" class="text-xl font-bold text-[#5a341a]">Jayanth</a>
+    <nav class="mt-8 space-y-3">
+      <a class="block px-3 py-2 rounded hover:bg-[#fff2ea]" href="dashboard-C.html">Overview</a>
+      <a class="block px-3 py-2 rounded hover:bg-[#fff2ea]" href="projects.html">Projects</a>
+      <a class="block px-3 py-2 rounded hover:bg-[#fff2ea]" href="skills.html">Skills</a>
+      <a class="block px-3 py-2 rounded hover:bg-[#fff2ea]" href="contact.html">Contact</a>
+    </nav>
+  </aside>
+
+  <main class="flex-1 p-8">
+    <h1 class="text-2xl font-bold mb-6" data-aos="fade-up">Overview</h1>
+
+    <div class="grid grid-cols-3 gap-6 mb-6">
+      <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-right">
+        <h3 class="text-lg font-semibold">Projects</h3>
+        <div class="text-3xl font-bold mt-2">3</div>
+      </div>
+      <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-up">
+        <h3 class="text-lg font-semibold">LeetCode solved</h3>
+        <div class="text-3xl font-bold mt-2">50+</div>
+      </div>
+      <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-left">
+        <h3 class="text-lg font-semibold">SkillRack</h3>
+        <div class="text-3xl font-bold mt-2">915+</div>
+      </div>
+    </div>
+
+    <section class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-up">
+      <h2 class="text-xl font-semibold mb-3">Latest</h2>
+      <p class="text-sm">Worked on Smart File Organizer — Python GUI with voice features and login tracking.</p>
+    </section>
+  </main>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+</body>
+</html>

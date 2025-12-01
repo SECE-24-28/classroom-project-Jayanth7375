@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects — Jayanth</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+  <style>
+    .code-box {
+      overflow: hidden;
+      height: 0;
+      display: none;
+      transition: height .35s ease;
+      will-change: height;
+      z-index: 30;
+    }
+  </style>
+</head>
+
+<body class="bg-[#f7f1e5] text-[#3a2a1f]">
+
+<!-- HEADER -->
+<header class="bg-[#fffaf2] border-b-2 border-[#b68b63] px-6 py-4 shadow">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <a href="dashboard.html" class="font-bold text-2xl text-[#5a341a]">Jayanth</a>
+    <nav class="space-x-6">
+      <a href="about.html">About</a>
+      <a href="projects.html" class="font-semibold">Projects</a>
+      <a href="skills.html">Skills</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- MAIN -->
+<main class="max-w-6xl mx-auto p-6">
+
+  <h1 class="text-3xl font-bold mb-4" data-aos="fade-up">Selected Projects</h1>
+  <p class="text-gray-700 mb-8" data-aos="fade-up" data-aos-delay="80">
+    Click "View Code Snippet" to see example code for each project.
+  </p>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+    <!-- PROJECT 1 -->
+    <article class="bg-[#fffaf2] rounded-2xl p-6 shadow relative" data-aos="zoom-in">
+
+      <h3 class="text-xl font-semibold mb-2">Micro-Donation Platform</h3>
+      <p class="text-sm mb-4">
+        A micro-donation platform built with Spring Boot + MySQL. Features dashboards,
+        authentication, campaign management, and real-time donation tracking.
+      </p>
+
+      <button 
+        onclick="toggleCode('code1')" 
+        class="px-4 py-2 bg-[#7a4c29] text-white rounded-lg text-sm font-semibold hover:bg-[#5a341a] transition">
+        View Code Snippet ▼
+      </button>
+
+      <!-- FLOATING CODE BOX -->
+      <div id="code1" class="code-box absolute left-0 right-0 bg-[#f3eee3] p-4 rounded-lg shadow-xl border border-[#d6c8b8] mt-2">
+        <pre class="text-xs whitespace-pre-wrap">
+@RestController
+@RequestMapping("/donate")
+public class DonationController {
+
+    @PostMapping("/add")
+    public ResponseEntity<String> donate(@RequestBody Donation d) {
+        service.saveDonation(d);
+        return ResponseEntity.ok("Donation Successful");
+    }
+}
+        </pre>
+      </div>
+
+    </article>
+
+
+    <!-- PROJECT 2 -->
+    <article class="bg-[#fffaf2] rounded-2xl p-6 shadow relative" data-aos="zoom-in" data-aos-delay="80">
+
+      <h3 class="text-xl font-semibold mb-2">Smart File Organizer (Sortify)</h3>
+      <p class="text-sm mb-4">
+        Python desktop application using CustomTkinter with automated file sorting,
+        voice commands, secure login, and progress tracking.
+      </p>
+
+      <button 
+        onclick="toggleCode('code2')" 
+        class="px-4 py-2 bg-[#7a4c29] text-white rounded-lg text-sm font-semibold hover:bg-[#5a341a] transition">
+        View Code Snippet ▼
+      </button>
+
+      <!-- FLOATING BOX -->
+      <div id="code2" class="code-box absolute left-0 right-0 bg-[#f3eee3] p-4 rounded-lg shadow-xl border border-[#d6c8b8] mt-2">
+        <pre class="text-xs whitespace-pre-wrap">
+import os
+import shutil
+
+def organize_files(path):
+    for file in os.listdir(path):
+        ext = file.split(".")[-1]
+        folder = os.path.join(path, ext)
+        os.makedirs(folder, exist_ok=True)
+        shutil.move(os.path.join(path, file), folder)
+        </pre>
+      </div>
+
+    </article>
+
+
+    <!-- PROJECT 3 -->
+    <article class="bg-[#fffaf2] rounded-2xl p-6 shadow relative" data-aos="zoom-in" data-aos-delay="160">
+
+      <h3 class="text-xl font-semibold mb-2">Hospital Management System</h3>
+      <p class="text-sm mb-4">
+        Full-stack hospital system using Spring Boot + Thymeleaf for patient records,
+        billing, validation, and appointment scheduling.
+      </p>
+
+      <button 
+        onclick="toggleCode('code3')" 
+        class="px-4 py-2 bg-[#7a4c29] text-white rounded-lg text-sm font-semibold hover:bg-[#5a341a] transition">
+        View Code Snippet ▼
+      </button>
+
+      <!-- FLOATING BOX -->
+      <div id="code3" class="code-box absolute left-0 right-0 bg-[#f3eee3] p-4 rounded-lg shadow-xl border border-[#d6c8b8] mt-2">
+        <pre class="text-xs whitespace-pre-wrap">
+@Entity
+public class Patient {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String name;
+    private String diagnosis;
+}
+        </pre>
+      </div>
+
+    </article>
+
+  </div>
+</main>
+
+
+<!-- JS — PERFECTED FLOATING BOX ANIMATION -->
+<script>
+function toggleCode(id) {
+    const box = document.getElementById(id);
+
+    // If currently hidden → open it
+    if (box.style.display === "none" || box.style.display === "") {
+        box.style.display = "block";
+        box.style.height = "0px";
+
+        requestAnimationFrame(() => {
+            box.style.height = box.scrollHeight + "px";
+        });
+
+    } else {
+        // Closing animation
+        box.style.height = box.scrollHeight + "px";
+        requestAnimationFrame(() => {
+            box.style.height = "0px";
+        });
+
+        // Fully hide after animation
+        box.addEventListener("transitionend", () => {
+            box.style.display = "none";
+        }, { once: true });
+    }
+}
+</script>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+
+</body>
+</html>

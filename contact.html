@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Jayanth</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <!-- Heroicons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+</head>
+
+<body class="bg-[#f7f1e5] text-[#3a2a1f]">
+<canvas id="sparkleCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+
+<!-- NAV -->
+<header class="bg-[#fffaf2] border-b-2 border-[#b68b63] px-6 py-4 shadow">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <a href="dashboard-C.html" class="font-bold text-2xl text-[#5a341a]">Jayanth</a>
+    <nav class="flex items-center space-x-6">
+  <a href="about.html">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="contact.html">Contact</a>
+
+  <!-- DOWNLOAD RESUME BUTTON -->
+  <a href="RESUMEEE.pdf.pdf" 
+     download
+     class="px-4 py-2 bg-[#7a4c29] text-white rounded-lg font-semibold hover:bg-[#5a341a] transition shadow">
+     Download Resume
+  </a>
+</nav>
+
+  </div>
+</header>
+
+
+<!-- MAIN CONTACT SECTION -->
+<main class="max-w-6xl mx-auto px-6 py-12">
+
+  <h1 class="text-4xl font-bold mb-4" data-aos="fade-up">Get In Touch</h1>
+
+  <p class="text-gray-700 max-w-2xl mb-10" data-aos="fade-up" data-aos-delay="120">
+    I'm open to internships, collaborations, and freelancing.  
+    Use the icons to contact me — email, phone, GitHub, LinkedIn.  
+    (I will add your links when you tell me.)
+  </p>
+
+  
+  <div class="grid md:grid-cols-2 gap-10">
+
+    <!-- LEFT SIDE — ICON CONTACT PANEL -->
+    <div class="bg-[#fffaf2] p-8 rounded-2xl shadow" data-aos="zoom-in">
+
+      <h2 class="text-xl font-semibold mb-6 text-[#5a341a]">Contact Icons</h2>
+
+      <!-- ICON GRID -->
+      <div class="grid grid-cols-2 gap-6">
+
+        <!-- PHONE ICON -->
+        <button id="phoneBtn"
+          class="flex flex-col items-center justify-center p-6 bg-[#f3eee3] rounded-xl shadow hover:bg-[#e9dfd2] transition cursor-pointer">
+          <i data-feather="phone" class="w-8 h-8 mb-2"></i>
+          <span class="text-sm font-medium">Phone</span>
+        </button>
+
+        <!-- EMAIL ICON -->
+        <button id="emailBtn"
+          class="flex flex-col items-center justify-center p-6 bg-[#f3eee3] rounded-xl shadow hover:bg-[#e9dfd2] transition cursor-pointer">
+          <i data-feather="mail" class="w-8 h-8 mb-2"></i>
+          <span class="text-sm font-medium">Email</span>
+        </button>
+
+        <!-- GITHUB ICON -->
+        <button id="githubBtn"
+          class="flex flex-col items-center justify-center p-6 bg-[#f3eee3] rounded-xl shadow hover:bg-[#e9dfd2] transition cursor-pointer">
+          <i data-feather="github" class="w-8 h-8 mb-2"></i>
+          <span class="text-sm font-medium">GitHub</span>
+        </button>
+
+        <!-- LINKEDIN ICON -->
+        <button id="linkedinBtn"
+          class="flex flex-col items-center justify-center p-6 bg-[#f3eee3] rounded-xl shadow hover:bg-[#e9dfd2] transition cursor-pointer">
+          <i data-feather="linkedin" class="w-8 h-8 mb-2"></i>
+          <span class="text-sm font-medium">LinkedIn</span>
+        </button>
+
+        Wait for more
+
+      </div>
+
+      
+
+    </div>
+
+
+
+
+    <!-- RIGHT SIDE — CONTACT FORM -->
+    <div class="bg-[#fffaf2] p-8 rounded-2xl shadow" data-aos="zoom-in" data-aos-delay="150">
+
+      <h2 class="text-xl font-semibold mb-6 text-[#5a341a]">Message Me</h2>
+
+      <form class="space-y-4">
+
+        <div>
+          <label class="text-sm font-medium">Name</label>
+          <input type="text" class="w-full border rounded-lg px-4 py-2 mt-1 bg-[#f7f1e5] outline-none" />
+        </div>
+
+        <div>
+          <label class="text-sm font-medium">Email</label>
+          <input type="email" class="w-full border rounded-lg px-4 py-2 mt-1 bg-[#f7f1e5] outline-none" />
+        </div>
+
+        <div>
+          <label class="text-sm font-medium">Message</label>
+          <textarea class="w-full border rounded-lg px-4 py-2 mt-1 bg-[#f7f1e5] h-32 outline-none"></textarea>
+        </div>
+
+        <button 
+          class="px-6 py-2 bg-[#7a4c29] text-white rounded-lg font-semibold hover:bg-[#5a341a] transition shadow">
+          Send message
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</main>
+
+
+<!-- ICON RENDER -->
+<script>
+  feather.replace();
+  document.getElementById('phoneBtn').addEventListener('click', ()=> {
+      // replace with desired action later
+      alert('Phone action — will set later');
+    });
+    document.getElementById('emailBtn').addEventListener('click', ()=> {
+      window.location.href = 'mailto:youremail@example.com';
+    });
+    document.getElementById('githubBtn').addEventListener('click', ()=> {
+      window.open('https://github.com/Jayanth7375', '_blank');
+    });
+    document.getElementById('linkedinBtn').addEventListener('click', ()=> {
+      window.open('https://www.linkedin.com', '_blank');
+    });
+</script>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script>
+const canvas = document.getElementById("sparkleCanvas");
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function createParticle() {
+  return {
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 3 + 1,
+    speedX: (Math.random() - 0.5) * 0.5,
+    speedY: (Math.random() - 0.5) * 0.5,
+    opacity: Math.random() * 0.8 + 0.2
+  };
+}
+
+// Initialize particles
+for (let i = 0; i < 100; i++) {
+  particles.push(createParticle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach((p) => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+    ctx.fill();
+
+    // Movement
+    p.x += p.speedX;
+    p.y += p.speedY;
+
+    // Respawn if out of bounds
+    if (p.x < 0 || p.x > canvas.width || p.y < 0 || p.y > canvas.height) {
+      Object.assign(p, createParticle());
+    }
+  });
+
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+</script>
+
+
+</body>
+</html>

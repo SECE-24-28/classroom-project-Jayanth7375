@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Welcome – Jayanth Portfolio</title>
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS (optional animations) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+  <!-- Feather icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    /* Container */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 520px; /* left content, right visual column */
+      align-items: center;
+      gap: 2rem;
+      padding: 4rem 2rem;
+    }
+
+    /* Right column wrapper */
+    .visual {
+      position: relative;
+      height: 520px; /* keeps consistent vertical center alignment */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Profile image */
+    .profile {
+      width: 300px;
+      height: 300px;
+      border-radius: 9999px;
+      object-fit: cover;
+      border: 8px solid rgba(214,200,184,0.6);
+      box-shadow: 0 18px 30px rgba(18,12,6,0.08);
+      background: #fff6ef;
+    }
+
+    /* Arc wrapper positioned around image */
+    .icon-arc {
+      position: absolute;
+      width: 520px; /* same as visual column */
+      height: 520px;
+      left: 0;
+      top: 0;
+      pointer-events: none; /* icons themselves will handle clicks */
+    }
+
+    .icon-arc .icon {
+  --angle: 0deg;
+  --distance: 220px;   /* <-- increased spacing */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 0 0;
+  pointer-events: auto;
+  transition: transform .25s ease, background .18s ease, box-shadow .18s ease;
+  z-index: 25;
+}
+
+
+    /* compute transform: rotate(angle) translate(distance) rotate(-angle) */
+    .icon-arc .icon i {
+      display: inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:44px;
+      height:44px;
+      border-radius:9999px;
+      background:#f3eee3;
+      color:#3b2a1f;
+      border:1px solid rgba(182,139,99,0.06);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    /* apply the rotation+translation using the data-angle attribute */
+    .icon-arc .icon[data-angle] {
+      transform: rotate(var(--rot, 0deg)) translate(calc(var(--distance)) ) rotate(calc(var(--rot, 0deg) * -1));
+    }
+
+    /* We'll set --rot via inline style in JS (so it's responsive) */
+
+    /* hover effect */
+    .icon-arc .icon i:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 14px 26px rgba(18,12,6,0.12);
+    }
+
+    /* small screens: stack image then icons horizontally below */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 3rem 1.25rem; }
+      .visual { height: auto; margin-top: 1.5rem; }
+      .profile { width: 220px; height: 220px; border-width:6px; }
+      .icon-arc { position: relative; width: auto; height: auto; left: auto; top: auto; display:flex; gap:12px; justify-content:center; margin-top:16px; pointer-events:auto; }
+      .icon-arc .icon { position: static; transform:none; --distance:0px; }
+      .icon-arc .icon i { width:42px; height:42px; }
+    }
+
+    /* accessibility focus */
+    .icon-arc button:focus i {
+      outline: 3px solid rgba(122,76,41,0.18);
+      outline-offset: 4px;
+    }
+  </style>
+</head>
+<body class="bg-[#f7f1e5] text-[#3b2a1f]">
+    <canvas id="sparkleCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+
+  <div class="hero max-w-7xl mx-auto">
+
+    <!-- LEFT TEXT -->
+    <div class="pl-4 pr-6">
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4" data-aos="fade-right">
+        Welcome to My <br> <span class="text-[#7a4c29]">Portfolio</span>
+      </h1>
+
+      <p class="text-lg max-w-xl mb-8" data-aos="fade-up" data-aos-delay="120">
+        Hey, I'm <strong>Jayanth</strong> — MERN Developer & AI/ML enthusiast. Explore my dashboard to view projects, skills and contact options.
+      </p>
+
+      <a href="dashboard-C.html" class="inline-block px-8 py-3 rounded-lg bg-[#7a4c29] text-white font-semibold shadow hover:bg-[#5a341a] transition" data-aos="fade-up" data-aos-delay="200">
+        Enter Portfolio →
+      </a>
+    </div>
+
+    <!-- RIGHT VISUAL COLUMN -->
+    <div class="visual" aria-hidden="false">
+
+      <!-- big circular placeholder (optional decorative ring) -->
+      <div style="position:absolute; width:380px; height:380px; border-radius:9999px; border:4px solid rgba(214,200,184,0.25); left:50%; top:50%; transform:translate(-50%,-50%); filter: blur(0.2px);"></div>
+
+      <!-- profile image -->
+      <img src="JAYANTH COMPRESSED JPEG PASSPORT SIZE PHOTO.jpg" alt="Jayanth profile" class="profile z-20" data-aos="zoom-in"/>
+
+      <!-- icons on arc -->
+      <div class="icon-arc" id="iconArc" aria-hidden="false">
+        <!-- each .icon container will be positioned via JS by setting --rot value -->
+        <div class="icon" id="phoneBtn" role="button" data-name="phone">
+          <i data-feather="phone"></i>
+        </div>
+
+        <div class="icon" id="emailBtn" role="button" data-name="email">
+          <i data-feather="mail"></i>
+        </div>
+
+        <div class="icon" id="githubBtn" role="button" data-name="github">
+          <i data-feather="github"></i>
+        </div>
+
+        <div class="icon" id="linkedinBtn" role="button" data-name="linkedin">
+          <i data-feather="linkedin"></i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Feather replace -->
+  <script>feather.replace()</script>
+
+  <!-- AOS init -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <script>
+    // Arrange the icons along an arc around the image
+    (function arrangeArc(){
+      const arc = document.getElementById('iconArc');
+      const icons = Array.from(arc.querySelectorAll('.icon'));
+      //Angles for each icon in degrees relative to right horizontal (adjust to taste).
+      // We'll compute a semicircular arc from roughly -70deg to 70deg
+      const total = icons.length;
+      const startDeg = -70;
+      const endDeg = 70;
+
+      function positionIcons() {
+        const rect = arc.getBoundingClientRect();
+        // radius proportional to image size
+        const img = document.querySelector('.profile');
+        const imgRect = img.getBoundingClientRect();
+        const radius = 240;  // moves icons farther right
+ // responsive radius
+
+        for (let i=0; i<icons.length; i++){
+          const t = total === 1 ? 0.5 : i/(total-1);
+          const deg = startDeg + (endDeg - startDeg) * t; // degrees
+          // set custom properties for CSS transform usage
+          icons[i].style.setProperty('--rot', deg + 'deg');
+          icons[i].style.setProperty('--distance', radius + 'px');
+
+          // compute translate to keep icons visually around lower-right quadrant
+          // position element center at 50% 50% (we used transform origin 0 0)
+          // we also nudge them slightly downward to hug image border
+          // set top/left offsets:
+          const centerX = rect.width/2;
+          const centerY = rect.height/2;
+          // compute polar coordinates
+          const rad = deg * Math.PI / 180;
+          const x = centerX + Math.cos(rad) * radius;
+          const y = centerY + Math.sin(rad) * radius;
+          icons[i].style.left = `${x}px`;
+          icons[i].style.top = `${y}px`;
+        }
+      }
+
+      // initial position and on resize
+      positionIcons();
+      window.addEventListener('resize', positionIcons);
+    })();
+
+    // Example - simple click handlers (replace or expand later)
+    document.getElementById('phoneBtn').addEventListener('click', ()=> {
+      // replace with desired action later
+      alert('Phone action — will set later');
+    });
+    document.getElementById('emailBtn').addEventListener('click', ()=> {
+      window.location.href = 'mailto:youremail@example.com';
+    });
+    document.getElementById('githubBtn').addEventListener('click', ()=> {
+      window.open('https://github.com/Jayanth7375', '_blank');
+    });
+    document.getElementById('linkedinBtn').addEventListener('click', ()=> {
+      window.open('https://www.linkedin.com', '_blank');
+    });
+  </script>
+  <script>
+const canvas = document.getElementById("sparkleCanvas");
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function createParticle() {
+  return {
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 3 + 1,
+    speedX: (Math.random() - 0.5) * 0.5,
+    speedY: (Math.random() - 0.5) * 0.5,
+    opacity: Math.random() * 0.8 + 0.2
+  };
+}
+
+// Initialize particles
+for (let i = 0; i < 100; i++) {
+  particles.push(createParticle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach((p) => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+    ctx.fill();
+
+    // Movement
+    p.x += p.speedX;
+    p.y += p.speedY;
+
+    // Respawn if out of bounds
+    if (p.x < 0 || p.x > canvas.width || p.y < 0 || p.y > canvas.height) {
+      Object.assign(p, createParticle());
+    }
+  });
+
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+</script>
+
+
+</body>
+</html>
