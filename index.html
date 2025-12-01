@@ -114,7 +114,7 @@
   </style>
 </head>
 <body class="bg-[#f7f1e5] text-[#3b2a1f]">
-    <canvas id="sparkleCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+<canvas id="snowCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
 
 
   <div class="hero max-w-7xl mx-auto">
@@ -235,56 +235,58 @@
     });
   </script>
   <script>
-const canvas = document.getElementById("sparkleCanvas");
-const ctx = canvas.getContext("2d");
-let particles = [];
+const snowCanvas = document.getElementById("snowCanvas");
+const sctx = snowCanvas.getContext("2d");
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+function resizeSnow() {
+  snowCanvas.width = window.innerWidth;
+  snowCanvas.height = window.innerHeight;
 }
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+resizeSnow();
+window.addEventListener("resize", resizeSnow);
 
-function createParticle() {
-  return {
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    size: Math.random() * 3 + 1,
-    speedX: (Math.random() - 0.5) * 0.5,
-    speedY: (Math.random() - 0.5) * 0.5,
-    opacity: Math.random() * 0.8 + 0.2
-  };
-}
-
-// Initialize particles
-for (let i = 0; i < 100; i++) {
-  particles.push(createParticle());
-}
-
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  particles.forEach((p) => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-    ctx.fill();
-
-    // Movement
-    p.x += p.speedX;
-    p.y += p.speedY;
-
-    // Respawn if out of bounds
-    if (p.x < 0 || p.x > canvas.width || p.y < 0 || p.y > canvas.height) {
-      Object.assign(p, createParticle());
-    }
+let snowflakes = [];
+for (let i = 0; i < 120; i++) {
+  snowflakes.push({
+    x: Math.random() * snowCanvas.width,
+    y: Math.random() * snowCanvas.height,
+    r: Math.random() * 3 + 1,
+    d: Math.random() + 0.5
   });
-
-  requestAnimationFrame(animateParticles);
 }
-animateParticles();
+
+function drawSnow() {
+  sctx.clearRect(0, 0, snowCanvas.width, snowCanvas.height);
+  sctx.fillStyle = "rgba(255,255,255,0.85)";
+  sctx.beginPath();
+  for (let f of snowflakes) {
+    sctx.moveTo(f.x, f.y);
+    sctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+  }
+  sctx.fill();
+  updateSnow();
+}
+
+let angle = 0;
+function updateSnow() {
+  angle += 0.001;
+  for (let f of snowflakes) {
+    f.y += Math.cos(angle) + f.d;
+    f.x += Math.sin(angle) * 0.3;
+
+    if (f.y > snowCanvas.height) {
+      f.y = -10;
+      f.x = Math.random() * snowCanvas.width;
+    }
+  }
+}
+
+(function animateSnow() {
+  drawSnow();
+  requestAnimationFrame(animateSnow);
+})();
 </script>
+
 
 
 </body>

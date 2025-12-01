@@ -1,34 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects — Jayanth</title>
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- AOS Animations -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
   <style>
-    .code-box {
-      overflow: hidden;
-      height: 0;
-      display: none;
-      transition: height .35s ease;
-      will-change: height;
-      z-index: 30;
+    /* Smooth hover zoom for images */
+    .project-img {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .project-img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Glass effect card */
+    .glass-card {
+      background: rgba(255, 250, 242, 0.7);
+      backdrop-filter: blur(6px);
+      border: 1px solid #e7d7c8;
     }
   </style>
 </head>
 
 <body class="bg-[#f7f1e5] text-[#3a2a1f]">
 
-<!-- HEADER -->
+<!-- SNOWFALL BACKGROUND -->
+<canvas id="snowCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none"></canvas>
+
+<!-- NAVBAR -->
 <header class="bg-[#fffaf2] border-b-2 border-[#b68b63] px-6 py-4 shadow">
   <div class="max-w-6xl mx-auto flex justify-between items-center">
-    <a href="dashboard.html" class="font-bold text-2xl text-[#5a341a]">Jayanth</a>
+    <a href="dashboard-C.html" class="font-bold text-2xl text-[#5a341a]">Jayanth</a>
+
     <nav class="space-x-6">
       <a href="about.html">About</a>
       <a href="projects.html" class="font-semibold">Projects</a>
@@ -38,153 +49,126 @@
   </div>
 </header>
 
+<!-- MAIN CONTENT -->
+<main class="max-w-6xl mx-auto px-6 py-10">
 
-<!-- MAIN -->
-<main class="max-w-6xl mx-auto p-6">
-
-  <h1 class="text-3xl font-bold mb-4" data-aos="fade-up">Selected Projects</h1>
-  <p class="text-gray-700 mb-8" data-aos="fade-up" data-aos-delay="80">
-    Click "View Code Snippet" to see example code for each project.
+  <h1 class="text-4xl font-extrabold mb-6" data-aos="fade-up">Selected Projects</h1>
+  <p class="text-lg mb-12 text-gray-700" data-aos="fade-up" data-aos-delay="50">
+    Explore some of my featured work — each project includes a description, highlights, and key technologies.
   </p>
 
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+  <!-- PROJECT 1 -->
+  <section class="grid md:grid-cols-2 gap-10 items-center py-10 glass-card rounded-2xl p-6" data-aos="fade-right">
+    
+    <img src="Screenshot 2025-12-02 013422.png" alt="Project Image"
+         class="rounded-xl shadow-lg project-img w-full">
 
-    <!-- PROJECT 1 -->
-    <article class="bg-[#fffaf2] rounded-2xl p-6 shadow relative" data-aos="zoom-in">
-
-      <h3 class="text-xl font-semibold mb-2">Micro-Donation Platform</h3>
-      <p class="text-sm mb-4">
-        A micro-donation platform built with Spring Boot + MySQL. Features dashboards,
-        authentication, campaign management, and real-time donation tracking.
+    <div>
+      <h2 class="text-2xl font-bold mb-3 text-[#7a4c29]">Micro-Donation Platform</h2>
+      <p class="text-gray-700 mb-4">
+        A micro-donation web platform built with Spring Boot + MySQL. Includes authentication,
+        dashboards, donation tracking, and campaign management with real-time analytics.
       </p>
 
-      <button 
-        onclick="toggleCode('code1')" 
-        class="px-4 py-2 bg-[#7a4c29] text-white rounded-lg text-sm font-semibold hover:bg-[#5a341a] transition">
-        View Code Snippet ▼
-      </button>
+    </div>
 
-      <!-- FLOATING CODE BOX -->
-      <div id="code1" class="code-box absolute left-0 right-0 bg-[#f3eee3] p-4 rounded-lg shadow-xl border border-[#d6c8b8] mt-2">
-        <pre class="text-xs whitespace-pre-wrap">
-@RestController
-@RequestMapping("/donate")
-public class DonationController {
+  </section>
 
-    @PostMapping("/add")
-    public ResponseEntity<String> donate(@RequestBody Donation d) {
-        service.saveDonation(d);
-        return ResponseEntity.ok("Donation Successful");
-    }
-}
-        </pre>
-      </div>
+  <!-- PROJECT 2 -->
+  <section class="grid md:grid-cols-2 gap-10 items-center py-10 glass-card rounded-2xl p-6 mt-12" data-aos="fade-left">
 
-    </article>
-
-
-    <!-- PROJECT 2 -->
-    <article class="bg-[#fffaf2] rounded-2xl p-6 shadow relative" data-aos="zoom-in" data-aos-delay="80">
-
-      <h3 class="text-xl font-semibold mb-2">Smart File Organizer (Sortify)</h3>
-      <p class="text-sm mb-4">
-        Python desktop application using CustomTkinter with automated file sorting,
-        voice commands, secure login, and progress tracking.
+    <div class="order-2 md:order-1">
+      <h2 class="text-2xl font-bold mb-3 text-[#7a4c29]">Smart File Organizer (Sortify)</h2>
+      <p class="text-gray-700 mb-4">
+        A Python desktop tool using CustomTkinter GUI. Supports automated file sorting,
+        secure login with timestamp tracking, voice commands, and visual progress indicators.
       </p>
 
-      <button 
-        onclick="toggleCode('code2')" 
-        class="px-4 py-2 bg-[#7a4c29] text-white rounded-lg text-sm font-semibold hover:bg-[#5a341a] transition">
-        View Code Snippet ▼
-      </button>
+ 
+    </div>
 
-      <!-- FLOATING BOX -->
-      <div id="code2" class="code-box absolute left-0 right-0 bg-[#f3eee3] p-4 rounded-lg shadow-xl border border-[#d6c8b8] mt-2">
-        <pre class="text-xs whitespace-pre-wrap">
-import os
-import shutil
+    <img src="image copy.png" 
+         alt="Project Image" 
+         class="rounded-xl shadow-lg project-img w-full order-1 md:order-2">
 
-def organize_files(path):
-    for file in os.listdir(path):
-        ext = file.split(".")[-1]
-        folder = os.path.join(path, ext)
-        os.makedirs(folder, exist_ok=True)
-        shutil.move(os.path.join(path, file), folder)
-        </pre>
-      </div>
+  </section>
 
-    </article>
+  <!-- PROJECT 3 -->
+  <section class="grid md:grid-cols-2 gap-10 items-center py-10 glass-card rounded-2xl p-6 mt-12" data-aos="fade-right">
+    
+    <img src="image.png" 
+         alt="Project Image"
+         class="rounded-xl shadow-lg project-img w-full">
 
-
-    <!-- PROJECT 3 -->
-    <article class="bg-[#fffaf2] rounded-2xl p-6 shadow relative" data-aos="zoom-in" data-aos-delay="160">
-
-      <h3 class="text-xl font-semibold mb-2">Hospital Management System</h3>
-      <p class="text-sm mb-4">
-        Full-stack hospital system using Spring Boot + Thymeleaf for patient records,
-        billing, validation, and appointment scheduling.
+    <div>
+      <h2 class="text-2xl font-bold mb-3 text-[#7a4c29]">Hospital Management System</h2>
+      <p class="text-gray-700 mb-4">
+        A full-stack hospital system developed using Spring Boot + Thymeleaf.
+        Includes patient management, doctor scheduling, bill generation,
+        report handling, and a responsive dashboard.
       </p>
+    </div>
 
-      <button 
-        onclick="toggleCode('code3')" 
-        class="px-4 py-2 bg-[#7a4c29] text-white rounded-lg text-sm font-semibold hover:bg-[#5a341a] transition">
-        View Code Snippet ▼
-      </button>
+  </section>
 
-      <!-- FLOATING BOX -->
-      <div id="code3" class="code-box absolute left-0 right-0 bg-[#f3eee3] p-4 rounded-lg shadow-xl border border-[#d6c8b8] mt-2">
-        <pre class="text-xs whitespace-pre-wrap">
-@Entity
-public class Patient {
-
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    private String name;
-    private String diagnosis;
-}
-        </pre>
-      </div>
-
-    </article>
-
-  </div>
 </main>
 
-
-<!-- JS — PERFECTED FLOATING BOX ANIMATION -->
-<script>
-function toggleCode(id) {
-    const box = document.getElementById(id);
-
-    // If currently hidden → open it
-    if (box.style.display === "none" || box.style.display === "") {
-        box.style.display = "block";
-        box.style.height = "0px";
-
-        requestAnimationFrame(() => {
-            box.style.height = box.scrollHeight + "px";
-        });
-
-    } else {
-        // Closing animation
-        box.style.height = box.scrollHeight + "px";
-        requestAnimationFrame(() => {
-            box.style.height = "0px";
-        });
-
-        // Fully hide after animation
-        box.addEventListener("transitionend", () => {
-            box.style.display = "none";
-        }, { once: true });
-    }
-}
-</script>
-
-<!-- AOS -->
+<!-- AOS Script -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init();</script>
+<script>AOS.init({ duration: 900 });</script>
+
+<!-- SNOWFALL SCRIPT -->
+<script>
+const snowCanvas = document.getElementById("snowCanvas");
+const sctx = snowCanvas.getContext("2d");
+
+function resizeSnow() {
+  snowCanvas.width = window.innerWidth;
+  snowCanvas.height = window.innerHeight;
+}
+resizeSnow();
+window.addEventListener("resize", resizeSnow);
+
+let snowflakes = [];
+for (let i = 0; i < 120; i++) {
+  snowflakes.push({
+    x: Math.random() * snowCanvas.width,
+    y: Math.random() * snowCanvas.height,
+    r: Math.random() * 3 + 1,
+    d: Math.random() + 0.5
+  });
+}
+
+function drawSnow() {
+  sctx.clearRect(0, 0, snowCanvas.width, snowCanvas.height);
+  sctx.fillStyle = "rgba(255,255,255,0.8)";
+  sctx.beginPath();
+  snowflakes.forEach(f => {
+    sctx.moveTo(f.x, f.y);
+    sctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+  });
+  sctx.fill();
+  updateSnow();
+}
+
+let angle = 0;
+function updateSnow() {
+  angle += 0.001;
+  snowflakes.forEach(f => {
+    f.y += Math.cos(angle) + f.d;
+    f.x += Math.sin(angle) * 0.3;
+    if (f.y > snowCanvas.height) {
+      f.y = -10;
+      f.x = Math.random() * snowCanvas.width;
+    }
+  });
+}
+
+(function animateSnow() {
+  drawSnow();
+  requestAnimationFrame(animateSnow);
+})();
+</script>
 
 </body>
 </html>

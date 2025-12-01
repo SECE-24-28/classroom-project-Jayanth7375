@@ -3,50 +3,132 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dashboard — Admin</title>
+  <title>Dashboard — Jayanth</title>
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 </head>
+
 <body class="bg-[#f7f1e5] text-[#3a2a1f]">
 
-<div class="min-h-screen flex">
-  <!-- sidebar -->
-  <aside class="w-64 bg-[#fffaf2] border-r border-[#b68b63] p-6">
-    <a href="index.html" class="text-xl font-bold text-[#5a341a]">Jayanth</a>
-    <nav class="mt-8 space-y-3">
-      <a class="block px-3 py-2 rounded hover:bg-[#fff2ea]" href="dashboard-C.html">Overview</a>
-      <a class="block px-3 py-2 rounded hover:bg-[#fff2ea]" href="projects.html">Projects</a>
-      <a class="block px-3 py-2 rounded hover:bg-[#fff2ea]" href="skills.html">Skills</a>
-      <a class="block px-3 py-2 rounded hover:bg-[#fff2ea]" href="contact.html">Contact</a>
+<!-- SNOW CANVAS -->
+<canvas id="snowCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+<!-- ⭐ TOP NAVBAR -->
+<header class="bg-[#fffaf2] border-b-2 border-[#b68b63] px-6 py-4 shadow-lg z-50 relative">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+
+    <!-- Left Logo -->
+    <a href="index.html" class="text-2xl font-bold text-[#5a341a]">
+      Jayanth
+    </a>
+
+    <!-- Right Nav Links -->
+    <nav class="space-x-6 font-medium">
+      <a href="dashboard-C.html" class="hover:text-[#7a4c29]">Overview</a>
+      <a href="projects.html" class="hover:text-[#7a4c29]">Projects</a>
+      <a href="skills.html" class="hover:text-[#7a4c29]">Skills</a>
+      <a href="contact.html" class="hover:text-[#7a4c29]">Contact</a>
     </nav>
-  </aside>
 
-  <main class="flex-1 p-8">
-    <h1 class="text-2xl font-bold mb-6" data-aos="fade-up">Overview</h1>
+  </div>
+</header>
 
-    <div class="grid grid-cols-3 gap-6 mb-6">
-      <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-right">
-        <h3 class="text-lg font-semibold">Projects</h3>
-        <div class="text-3xl font-bold mt-2">3</div>
-      </div>
-      <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-up">
-        <h3 class="text-lg font-semibold">LeetCode solved</h3>
-        <div class="text-3xl font-bold mt-2">50+</div>
-      </div>
-      <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-left">
-        <h3 class="text-lg font-semibold">SkillRack</h3>
-        <div class="text-3xl font-bold mt-2">915+</div>
-      </div>
+<!-- MAIN CONTENT -->
+<main class="max-w-6xl mx-auto p-8 mt-6">
+
+  <h1 class="text-3xl font-bold mb-6" data-aos="fade-up">Overview</h1>
+
+  <!-- Summary Cards -->
+  <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+    <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-right">
+      <h3 class="text-lg font-semibold">Projects</h3>
+      <div class="text-3xl font-bold mt-2">3</div>
     </div>
 
-    <section class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-up">
-      <h2 class="text-xl font-semibold mb-3">Latest</h2>
-      <p class="text-sm">Worked on Smart File Organizer — Python GUI with voice features and login tracking.</p>
-    </section>
-  </main>
-</div>
+    <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-up">
+      <h3 class="text-lg font-semibold">LeetCode solved</h3>
+      <div class="text-3xl font-bold mt-2">50+</div>
+    </div>
 
+    <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-left">
+      <h3 class="text-lg font-semibold">SkillRack</h3>
+      <div class="text-3xl font-bold mt-2">915+</div>
+    </div>
+
+  </div>
+
+  <!-- Latest Work -->
+  <section class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-up">
+    <h2 class="text-xl font-semibold mb-3">Latest</h2>
+    <p class="text-sm">
+      Worked on Smart File Organizer — Python GUI with voice features and login tracking.
+    </p>
+  </section>
+
+</main>
+
+<!-- AOS Init -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init();</script>
+
+<!-- SNOWFALL SCRIPT -->
+<script>
+const snowCanvas = document.getElementById("snowCanvas");
+const sctx = snowCanvas.getContext("2d");
+
+function resizeSnow() {
+  snowCanvas.width = window.innerWidth;
+  snowCanvas.height = window.innerHeight;
+}
+resizeSnow();
+window.addEventListener("resize", resizeSnow);
+
+let snowflakes = [];
+for (let i = 0; i < 120; i++) {
+  snowflakes.push({
+    x: Math.random() * snowCanvas.width,
+    y: Math.random() * snowCanvas.height,
+    r: Math.random() * 3 + 1,
+    d: Math.random() + 0.5
+  });
+}
+
+function drawSnow() {
+  sctx.clearRect(0, 0, snowCanvas.width, snowCanvas.height);
+  sctx.fillStyle = "rgba(255,255,255,0.85)";
+  sctx.beginPath();
+  snowflakes.forEach(f => {
+    sctx.moveTo(f.x, f.y);
+    sctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+  });
+  sctx.fill();
+  updateSnow();
+}
+
+let angle = 0;
+function updateSnow() {
+  angle += 0.001;
+  snowflakes.forEach(f => {
+    f.y += Math.cos(angle) + f.d;
+    f.x += Math.sin(angle) * 0.3;
+
+    if (f.y > snowCanvas.height) {
+      f.y = -10;
+      f.x = Math.random() * snowCanvas.width;
+    }
+  });
+}
+
+(function animateSnow() {
+  drawSnow();
+  requestAnimationFrame(animateSnow);
+})();
+</script>
+
 </body>
 </html>

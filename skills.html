@@ -4,11 +4,55 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Skills — Jayanth</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-</head>
-<body class="bg-[#f7f1e5] text-[#3a2a1f]">
 
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <style>
+/* Fade + slide animation */
+@keyframes fadeSlide {
+  0% { opacity: 0; transform: translateX(-10px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* List item animation */
+.skill-item {
+  opacity: 0;
+  animation: fadeSlide 0.5s ease forwards;
+}
+
+/* Special hover shine effect */
+.skill-item:hover {
+  color: #7a4c29;
+  text-shadow: 0 0 8px rgba(122, 76, 41, 0.3);
+  transform: translateX(4px);
+  transition: 0.25s ease;
+}
+
+/* Nice underline hover */
+.skill-item::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: #7a4c29;
+  transition: width 0.3s ease;
+  margin-top: 2px;
+}
+.skill-item:hover::after {
+  width: 35%;
+}
+</style>
+
+</head>
+
+<body class="bg-[#f7f1e5] text-[#3a2a1f]">
+<canvas id="snowCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+
+<!-- NAVBAR -->
 <header class="bg-[#fffaf2] border-b-2 border-[#b68b63] px-6 py-4 shadow">
   <div class="max-w-6xl mx-auto flex justify-between items-center">
     <a href="dashboard-C.html" class="font-bold text-2xl text-[#5a341a]">Jayanth</a>
@@ -21,52 +65,220 @@
   </div>
 </header>
 
+<!-- MAIN CONTENT -->
 <main class="max-w-6xl mx-auto p-6">
-  <h1 class="text-3xl font-bold mb-4" data-aos="fade-up">Technical Skills</h1>
-  <p class="mb-6 text-gray-700">Technologies, tools and platforms I actively use. (Source: resume) :contentReference[oaicite:6]{index=6}</p>
 
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-    <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-up">
-      <h3 class="font-semibold mb-2">Languages & Frameworks</h3>
-      <ul class="text-sm space-y-1">
-        <li>JavaScript (React, Node)</li>
-        <li>Python (NumPy, Pandas)</li>
-        <li>Java • Spring Boot</li>
-        <li>C / C++</li>
-        <li>HTML • CSS</li>
+  <!-- TITLE -->
+  <h1 class="text-4xl font-extrabold mb-3 text-[#5a341a]" data-aos="fade-up">Technical Skills</h1>
+  <p class="mb-10 text-gray-600" data-aos="fade-up" data-aos-delay="80">
+    A showcase of my technical abilities, tools, technologies, and coding strengths.
+  </p>
+
+  <!-- SKILL CATEGORY BOXES -->
+<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 mb-20">
+
+  <!-- Box 1 -->
+  <div class="group rounded-3xl p-6 shadow-xl bg-[#fffaf2]/70 backdrop-blur-md border border-[#d2c4b4] transition transform hover:-translate-y-2 hover:shadow-2xl hover:bg-[#fffaf2]/90 hover:border-[#b68b63] duration-300"
+       data-aos="zoom-in">
+    <h3 class="font-semibold text-xl mb-4 text-[#5a341a] group-hover:text-[#7a4c29] transition">Languages & Frameworks</h3>
+    <ul class="text-sm space-y-2">
+  <li class="skill-item" style="animation-delay: 0.1s">JavaScript (React, Node.js)</li>
+  <li class="skill-item" style="animation-delay: 0.2s">Python (NumPy, Pandas)</li>
+  <li class="skill-item" style="animation-delay: 0.3s">Java • Spring Boot</li>
+  <li class="skill-item" style="animation-delay: 0.4s">C / C++</li>
+  <li class="skill-item" style="animation-delay: 0.5s">HTML • CSS</li>
+</ul>
+
+  </div>
+
+  <!-- Box 2 -->
+  <div class="group rounded-3xl p-6 shadow-xl bg-[#fffaf2]/70 backdrop-blur-md border border-[#d2c4b4] transition transform hover:-translate-y-2 hover:shadow-2xl hover:bg-[#fffaf2]/90 hover:border-[#b68b63] duration-300"
+       data-aos="zoom-in" data-aos-delay="100">
+    <h3 class="font-semibold text-xl mb-4 text-[#5a341a] group-hover:text-[#7a4c29] transition">Databases & Tools</h3>
+    
+      <ul class="text-sm space-y-2">
+        <li class="skill-item" style="animation-delay: 0.1s">MySQL • PostgreSQL</li>
+        <li class="skill-item" style="animation-delay: 0.2s">Git • GitHub • VSCode</li>
+        <li class="skill-item" style="animation-delay: 0.3s">Canva • Tkinter (Intro)</li>
+        <li class="skill-item" style="animation-delay: 0.4s">Linux / CLI basics</li>
       </ul>
+
+  </div>
+
+  <!-- Box 3 -->
+  <div class="group rounded-3xl p-6 shadow-xl bg-[#fffaf2]/70 backdrop-blur-md border border-[#d2c4b4] transition transform hover:-translate-y-2 hover:shadow-2xl hover:bg-[#fffaf2]/90 hover:border-[#b68b63] duration-300"
+       data-aos="zoom-in" data-aos-delay="200">
+    <h3 class="font-semibold text-xl mb-4 text-[#5a341a] group-hover:text-[#7a4c29] transition">Data & Machine Learning</h3>
+
+    <ul class="text-sm space-y-2">
+        <li class="skill-item" style="animation-delay: 0.1s">Machine Learning basics</li>
+        <li class="skill-item" style="animation-delay: 0.2s">Scikit-learn, Numpy, Pandas</li>
+        <li class="skill-item" style="animation-delay: 0.3s">Model evaluation & feature engineering</li>
+      </ul>
+    
+  </div>
+
+  <!-- Box 4 -->
+  <div class="group sm:col-span-2 md:col-span-3 rounded-3xl p-7 shadow-xl bg-[#fffaf2]/70 backdrop-blur-md border border-[#d2c4b4] transition transform hover:-translate-y-2 hover:shadow-2xl hover:bg-[#fffaf2]/90 hover:border-[#b68b63] duration-300"
+       data-aos="zoom-in" data-aos-delay="300">
+    <h3 class="font-semibold text-xl mb-4 text-[#5a341a] group-hover:text-[#7a4c29] transition">Competitive Coding</h3>
+    <p class="text-sm">
+      LeetCode (50+ problems solved), SkillRack (900+ solved) — strong algorithms, patterns and data structure practice.
+    </p>
+  </div>
+
+</div>
+
+  <!-- SKILL RATING PROGRESS BARS -->
+ <section class="max-w-4xl mx-auto mt-10">
+
+  <h2 class="text-3xl font-bold text-[#5a341a] mb-6" data-aos="fade-up">Skill Ratings</h2>
+
+  <div class="space-y-8">
+
+    <!-- Skill -->
+    <div data-aos="fade-right">
+      <div class="flex justify-between items-center">
+        <p class="text-xl font-semibold">JavaScript</p>
+        <p class="text-lg font-semibold text-[#5a341a]" id="jsPercent">85%</p>
+      </div>
+      <p class="text-[#b88659] text-lg mb-1">★★★★☆</p>
+
+      <div class="w-full bg-[#e9dfd2] h-3 rounded-full overflow-hidden">
+        <div class="progress h-3 bg-[#7a4c29] rounded-full" data-value="85"></div>
+      </div>
     </div>
 
-    <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-up" data-aos-delay="80">
-      <h3 class="font-semibold mb-2">Databases & Tools</h3>
-      <ul class="text-sm space-y-1">
-        <li>MySQL • PostgreSQL</li>
-        <li>Git • GitHub • VSCode</li>
-        <li>Canva • Tkinter (Intro)</li>
-        <li>Linux / CLI basics</li>
-      </ul>
+    <!-- Skill -->
+    <div data-aos="fade-right" data-aos-delay="100">
+      <div class="flex justify-between items-center">
+        <p class="text-xl font-semibold">Python</p>
+        <p class="text-lg font-semibold text-[#5a341a]" id="pyPercent">75%</p>
+      </div>
+      <p class="text-[#b88659] text-lg mb-1">★★★★☆</p>
+
+      <div class="w-full bg-[#e9dfd2] h-3 rounded-full overflow-hidden">
+        <div class="progress h-3 bg-[#7a4c29] rounded-full" data-value="75"></div>
+      </div>
     </div>
 
-    <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-up" data-aos-delay="160">
-      <h3 class="font-semibold mb-2">Data & ML</h3>
-      <ul class="text-sm space-y-1">
-        <li>Machine Learning basics</li>
-        <li>scikit-learn, pandas, numpy</li>
-        <li>Model evaluation & feature engineering</li>
-      </ul>
+    <!-- Skill -->
+    <div data-aos="fade-right" data-aos-delay="200">
+      <div class="flex justify-between items-center">
+        <p class="text-xl font-semibold">Java</p>
+        <p class="text-lg font-semibold text-[#5a341a]" id="javaPercent">65%</p>
+      </div>
+      <p class="text-[#b88659] text-lg mb-1">★★★☆☆</p>
+
+      <div class="w-full bg-[#e9dfd2] h-3 rounded-full overflow-hidden">
+        <div class="progress h-3 bg-[#7a4c29] rounded-full" data-value="65"></div>
+      </div>
     </div>
 
-    <div class="bg-[#fffaf2] p-6 rounded-xl shadow" data-aos="fade-up" data-aos-delay="240">
-      <h3 class="font-semibold mb-2">Competitive Coding</h3>
-      <p class="text-sm">LeetCode (50+ problems), SkillRack (900+ solved) — algorithms & DS practice. :contentReference[oaicite:7]{index=7}</p>
+    <!-- Skill -->
+    <div data-aos="fade-right" data-aos-delay="300">
+      <div class="flex justify-between items-center">
+        <p class="text-xl font-semibold">C / C++</p>
+        <p class="text-lg font-semibold text-[#5a341a]" id="cppPercent">70%</p>
+      </div>
+      <p class="text-[#b88659] text-lg mb-1">★★★☆☆</p>
+
+      <div class="w-full bg-[#e9dfd2] h-3 rounded-full overflow-hidden">
+        <div class="progress h-3 bg-[#7a4c29] rounded-full" data-value="70"></div>
+      </div>
+    </div>
+
+    <!-- Skill -->
+    <div data-aos="fade-right" data-aos-delay="400">
+      <div class="flex justify-between items-center">
+        <p class="text-xl font-semibold">Machine Learning</p>
+        <p class="text-lg font-semibold text-[#5a341a]" id="mlPercent">55%</p>
+      </div>
+      <p class="text-[#b88659] text-lg mb-1">★★★☆☆</p>
+
+      <div class="w-full bg-[#e9dfd2] h-3 rounded-full overflow-hidden">
+        <div class="progress h-3 bg-[#7a4c29] rounded-full" data-value="55"></div>
+      </div>
     </div>
 
   </div>
+</section>
+
+
 </main>
 
+<!-- AOS Script -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+
+<!-- Progress Animation Script -->
 <script>
-  AOS.init();
+  window.addEventListener("load", () => {
+    document.querySelectorAll(".progress").forEach(bar => {
+      const value = bar.getAttribute("data-value");
+      bar.style.width = "0%";
+      setTimeout(() => {
+        bar.style.transition = "width 1.5s ease";
+        bar.style.width = value + "%";
+      }, 200);
+    });
+  });
 </script>
+
+<script>
+const snowCanvas = document.getElementById("snowCanvas");
+const sctx = snowCanvas.getContext("2d");
+
+function resizeSnow() {
+  snowCanvas.width = window.innerWidth;
+  snowCanvas.height = window.innerHeight;
+}
+resizeSnow();
+window.addEventListener("resize", resizeSnow);
+
+let snowflakes = [];
+for (let i = 0; i < 120; i++) {
+  snowflakes.push({
+    x: Math.random() * snowCanvas.width,
+    y: Math.random() * snowCanvas.height,
+    r: Math.random() * 3 + 1,
+    d: Math.random() + 0.5
+  });
+}
+
+function drawSnow() {
+  sctx.clearRect(0, 0, snowCanvas.width, snowCanvas.height);
+  sctx.fillStyle = "rgba(255,255,255,0.85)";
+  sctx.beginPath();
+  for (let f of snowflakes) {
+    sctx.moveTo(f.x, f.y);
+    sctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+  }
+  sctx.fill();
+  updateSnow();
+}
+
+let angle = 0;
+function updateSnow() {
+  angle += 0.001;
+  for (let f of snowflakes) {
+    f.y += Math.cos(angle) + f.d;
+    f.x += Math.sin(angle) * 0.3;
+
+    if (f.y > snowCanvas.height) {
+      f.y = -10;
+      f.x = Math.random() * snowCanvas.width;
+    }
+  }
+}
+
+(function animateSnow() {
+  drawSnow();
+  requestAnimationFrame(animateSnow);
+})();
+</script>
+
+
+
 </body>
 </html>
