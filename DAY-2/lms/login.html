@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login – SMART LMS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">SMART<span>LMS</span></div>
+    <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="login.html" class="nav-cta">Log In</a>
+    </div>
+</header>
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h2 class="auth-title">Welcome Back</h2>
+        <p class="auth-subtitle">Login to continue your prep journey.</p>
+
+        <!-- frontend only: redirect to dashboard -->
+        <form action="dashboard.html" method="get">
+            <div class="auth-field">
+                <label>Email or Username</label>
+                <input type="text" required>
+            </div>
+            <div class="auth-field">
+                <label>Password</label>
+                <input type="password" required>
+            </div>
+
+            <button class="btn-primary" type="submit">Log In</button>
+
+            <div class="auth-footer">
+                New to SMART LMS?
+                <a href="register.html">Create account</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
